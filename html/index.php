@@ -2,7 +2,6 @@
 session_start();
 require_once 'classes/Pet.php';
 
-// Función para mostrar el formulario inicial
 function showForm() {
   echo '
   <!DOCTYPE html>
@@ -12,7 +11,7 @@ function showForm() {
   <link rel="stylesheet" href="assets/css/estilos.css">
   <script src="https://cdn.tailwindcss.com"></script>
   </head>
-  <body class="p-4 bg-gray-800 text-white text-lg ">
+  <body class="p-4 bg-gray-800 text-white text-lg">
   <div class="contenedor">
   <h1 class="text-2xl mb-4">Pon un nombre a tu mascota virtual</h1>
   <form method="post">
@@ -25,7 +24,6 @@ function showForm() {
   ';
 }
 
-// Función para mostrar el juego
 function showGame($pet) {
   $state = $pet->getState();
   echo '
@@ -57,6 +55,7 @@ function showGame($pet) {
   <a href="?accion=sleep" class="bg-blue-500 rounded-md px-2 py-1">Dormir</a>
   <a href="?accion=play" class="bg-blue-500 rounded-md px-2 py-1">Jugar</a>
   <a href="?accion=clean" class="bg-blue-500 rounded-md px-2 py-1">Bañar</a>
+  <a href="?accion=delete" class="bg-red-500 rounded-md px-2 py-1" onclick="return confirm(\'¿Estás seguro que quieres eliminar la mascota?\')">Eliminar</a>
   </div>
   </div>
   </body>
@@ -80,31 +79,34 @@ if (isset($_GET['accion']) && isset($_SESSION['pet'])) {
   switch ($_GET['accion']) {
     case 'feed':
       $pet->feed();
+      $_SESSION['pet'] = serialize($pet);
       break;
     case 'sleep':
       $pet->sleep();
+      $_SESSION['pet'] = serialize($pet);
       break;
     case 'play':
       $pet->play();
+      $_SESSION['pet'] = serialize($pet);
       break;
     case 'clean':
       $pet->clean();
+      $_SESSION['pet'] = serialize($pet);
+      break;
+    case 'delete':
+      unset($_SESSION['pet']); // eliminar mascota
       break;
   }
 
-  $_SESSION['pet'] = serialize($pet);
   header("Location: index.php");
   exit;
 }
 
-// Mostrar la interfaz si hay mascota
+// Mostrar juego o formulario
 if (isset($_SESSION['pet'])) {
   $pet = unserialize($_SESSION['pet']);
-
-  // Aquí se actualiza el estado solo al recargar
   $pet->updateState();
   $_SESSION['pet'] = serialize($pet);
-
   showGame($pet);
 } else {
   showForm();
