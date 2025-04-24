@@ -1,0 +1,50 @@
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f0f8ff;
+  margin: 0;
+  padding: 20px;
+ }
+ .contenedor {
+  max-width: 800px;
+  margin: 0 auto;
+  background: white;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+ }
+ .estado {
+  text-align: center;
+  margin: 20px 0;
+ }
+ .estado img {
+  max-width: 200px;
+  border-radius: 10px;
+ }
+ .indicadores {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  margin: 20px 0;
+ }
+ .indicador {
+  background: #e9f5ff;
+  padding: 10px;
+  border-radius: 5px;
+ }
+ .acciones {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 20px;
+ }
+ .boton {
+  padding: 10px 15px;
+  background: #4CAF50;
+  color: white;
+  text-decoration: none;
+  border-radius: 5px;
+ }
+ .boton:hover {
+  background: #45a049;
+ }
+ 
