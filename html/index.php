@@ -10,13 +10,14 @@ function showForm() {
   <head>
   <title>Pet virtual</title>
   <link rel="stylesheet" href="assets/css/estilos.css">
+  <script src="https://cdn.tailwindcss.com"></script>
   </head>
-  <body>
+  <body class="p-4 bg-gray-800 text-white text-lg ">
   <div class="contenedor">
-  <h1>Pon un nombre a tu mascota virtual</h1>
+  <h1 class="text-2xl mb-4">Pon un nombre a tu mascota virtual</h1>
   <form method="post">
-  <input type="text" name="name" placeholder="Nombre" required>
-  <button type="submit">Crear</button>
+  <input class="text-black p-1 rounded-md" type="text" name="name" placeholder="Nombre" required>
+  <button class="bg-blue-500 rounded-md px-4 py-1 ml-2 hover:bg-blue-600" type="submit">Crear</button>
   </form>
   </div>
   </body>
@@ -33,14 +34,15 @@ function showGame($pet) {
   <head>
   <title>Pet - '.$state['name'].'</title>
   <link rel="stylesheet" href="assets/css/estilos.css">
+  <script src="https://cdn.tailwindcss.com"></script>
   </head>
-  <body>
+  <body class="text-lg bg-gray-800 text-white p-2">
   <div class="contenedor">
-  <h1>'.$state['name'].'</h1>
+  <h1 class="text-3xl my-4">'.$state['name'].'</h1>
 
   <div class="estado">
-  <img src="assets/img/'.$state['image'].'" alt="Pet" height="150px">
-  <p>'.$state['message'].'</p>
+  <img class="rounded-md my-4" src="assets/img/'.$state['image'].'" alt="Pet" height="150px">
+  <h3 class="text-xl underline my-1">'.$state['message'].'</h3>
   </div>
 
   <div class="indicadores">
@@ -50,11 +52,11 @@ function showGame($pet) {
   <div class="indicador"><span>Higiene:</span> '.$state['hygiene'].'/100</div>
   </div>
 
-  <div class="acciones">
-  <a href="?accion=feed" class="boton">Alimentar</a>
-  <a href="?accion=sleep" class="boton">Dormir</a>
-  <a href="?accion=play" class="boton">Jugar</a>
-  <a href="?accion=clean" class="boton">Bañar</a>
+  <div class="acciones mt-4">
+  <a href="?accion=feed" class="bg-blue-500 rounded-md px-2 py-1">Alimentar</a>
+  <a href="?accion=sleep" class="bg-blue-500 rounded-md px-2 py-1">Dormir</a>
+  <a href="?accion=play" class="bg-blue-500 rounded-md px-2 py-1">Jugar</a>
+  <a href="?accion=clean" class="bg-blue-500 rounded-md px-2 py-1">Bañar</a>
   </div>
   </div>
   </body>
